@@ -1,8 +1,6 @@
 <h2><%= @list.name %></h2>
 
-<%= link_to "Back", lists_path %>
-
-<%= link_to "Add movie", new_list_bookmark_path(@list) %>
+<%= link_to "Back", root_path %>
 
 <h2>Which movie would you like to add?</h2>
   <%= render 'form' %>%
