@@ -1,0 +1,23 @@
+<h2><%= @list.name %></h2>
+
+<%= link_to "Back", lists_path %>
+
+<%= link_to "Add movie", new_list_bookmark_path(@list) %>
+
+<h2>Which movie would you like to add?</h2>
+  <%= render 'form' %>%
+
+<h2>Movies</h2>
+
+<% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+  <div><%= image_tag movie.poster_url, alt: "movie pic" %>
+    <div>
+      <%= movie.title %>
+      <h1><%= bookmark.comment %></h1>
+      <%= movie.overview %>
+      <%= movie.rating %>
+      <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+  </div>
+<% end %>
