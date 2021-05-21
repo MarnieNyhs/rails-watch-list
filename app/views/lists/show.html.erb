@@ -1,4 +1,7 @@
 <h2><%= @list.name %></h2>
+<% if @list.photo.attached? %>
+  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 
 <%= link_to "Back", root_path %>
 
@@ -12,9 +15,6 @@
   <div><%= image_tag movie.poster_url, alt: "movie pic" %>
     <div>
       <%= movie.title %>
-      <% if bookmark.photo.attached? %>
-        <%= cl_image_tag bookmark.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
       <h1><%= bookmark.comment %></h1>
       <%= movie.overview %>
       <%= movie.rating %>

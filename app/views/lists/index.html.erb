@@ -5,6 +5,9 @@
     <%= link_to list_path(list) do %>
       <div class="background">
         <h1><%= list.name %></h1>
+        <% if list.photo.attached? %>
+          <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
@@ -12,6 +15,3 @@
 </div>
 
 <%= link_to "New list", new_list_path %>
-
-<%= cl_image_tag("alex-litvin-MAYsdoYpGuk-unsplash_rtekze",
-      width: 400, height: 300, crop: :fill) %>
